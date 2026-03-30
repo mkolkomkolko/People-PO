@@ -1,27 +1,19 @@
-import people.Agent;
-import people.CyclicBuffer;
-import people.Person;
-import people.Student;
+import fraction.CyclicBuffer;
+import fraction.Fraction;
 
 public class Main {
     public static void main(String[] args) {
 
-        CyclicBuffer people = new CyclicBuffer();
-        people.add(new Person("Adam", "Kowalski"));
-        people.add(new Student("Hubert", "Makowski", 123));
-//        people.add(new Agent("James", "Bond"));
+        CyclicBuffer fractions = new CyclicBuffer();
+        Fraction f1 = new Fraction(1, 2);
+        Fraction f2 = new Fraction(1, 4);
+        fractions.add(Fraction.add(f1, f2));
+        Fraction sum = fractions.get();
+        System.out.println(sum);
 
-        people.print();
-        while (!people.isEmpty()) {
-            Person p = people.get();
-            p.sayHallo();
-        }
 
-        System.out.println();
+        Fraction f3 = new Fraction(16, 9);
 
-        for (int i = 0; i < 20; ++i)
-            people.add(new Person("Ala", "Kowalska" + i));
-
-        people.print();
+        System.out.println(sum + " * " + f3 + " = " + Fraction.multiply(sum, f3));
     }
 }
