@@ -9,7 +9,7 @@ public class Main {
         CyclicBuffer people = new CyclicBuffer();
         people.add(new Person("Adam", "Kowalski"));
         people.add(new Student("Hubert", "Makowski", 123));
-        people.add(new Agent("James", "Bond"));
+//        people.add(new Agent("James", "Bond"));
 
         people.print();
         while (!people.isEmpty()) {
