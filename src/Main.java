@@ -5,33 +5,23 @@ import people.Student;
 
 public class Main {
     public static void main(String[] args) {
-        Person[] people = new Person[3];
-        people[0] = new Person("Adam", "Kowalski");
-        people[1] = new Student("Hubert", "Makowski", 123);
-        people[2] = new Agent("James", "Bond");
 
-        for (Person person : people) {
-            System.out.println(person);
-            person.sayHallo();
+        CyclicBuffer people = new CyclicBuffer();
+        people.add(new Person("Adam", "Kowalski"));
+        people.add(new Student("Hubert", "Makowski", 123));
+        people.add(new Agent("James", "Bond"));
+
+        people.print();
+        while (!people.isEmpty()) {
+            Person p = people.get();
+            p.sayHallo();
         }
 
         System.out.println();
 
-        people = CyclicBuffer.resizeArray(people, 4);
-        people[3] = new Person("Ala", "Kowalska");
+        for (int i = 0; i < 20; ++i)
+            people.add(new Person("Ala", "Kowalska" + i));
 
-        for (Person person : people) {
-            System.out.println(person);
-            person.sayHallo();
-        }
-
-        System.out.println();
-
-        people = CyclicBuffer.resizeArray(people, 2);
-
-        for (Person person : people) {
-            System.out.println(person);
-            person.sayHallo();
-        }
+        people.print();
     }
 }
